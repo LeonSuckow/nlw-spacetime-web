@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nlw-spacetime-web-production.up.railway.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
