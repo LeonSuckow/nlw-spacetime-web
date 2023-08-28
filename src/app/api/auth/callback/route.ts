@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
 
   const code = searchParams.get('code')
   console.log(code)
-
+  console.log(new URL('/', request.url))
   const redirectTo = request.cookies.get('redirectTo')?.value
   try {
     const registerResponse = await api.post('/register', {
