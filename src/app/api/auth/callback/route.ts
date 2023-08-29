@@ -2,11 +2,13 @@ import { api } from '@/lib/api'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
+  let { nextUrl, headers, url } = request
+  nextUrl.host = headers.get('Host') ?? nextUrl.host
+  url = nextUrl.href
+
+  const { searchParams } = new URL(url)
 
   const code = searchParams.get('code')
-  console.log(code)
-  console.log(request.nextUrl)
   const redirectTo = request.cookies.get('redirectTo')?.value
   try {
     const registerResponse = await api.post('/register', {
@@ -15,7 +17,7 @@ export async function GET(request: NextRequest) {
 
     const { token } = registerResponse.data
 
-    const redirectURL = redirectTo ?? new URL('/', request.url)
+    const redirectURL = redirectTo ?? new URL('/', url)
 
     const cookieExpiresInSeconds = 60 * 60 * 24 * 30
     return NextResponse.redirect(redirectURL, {
