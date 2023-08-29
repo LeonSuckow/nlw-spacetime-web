@@ -9,6 +9,7 @@ const nextConfig = {
       'nlw-spacetime-web-production.up.railway.app/',
     ],
   },
+  basePath: 'https://nlw-spacetime-web-production.up.railway.app/',
 }
 
 module.exports = nextConfig
