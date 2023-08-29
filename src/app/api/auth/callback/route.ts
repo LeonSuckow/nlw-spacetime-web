@@ -6,6 +6,9 @@ export async function GET(request: NextRequest) {
   nextUrl.host = headers.get('Host') ?? nextUrl.host
   url = nextUrl.href
 
+  console.log(nextUrl.host)
+  console.log(url)
+
   const { searchParams } = new URL(url)
 
   const code = searchParams.get('code')
