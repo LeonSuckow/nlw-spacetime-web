@@ -6,7 +6,7 @@ const nextConfig = {
       'images.unsplash.com',
       'avatars.githubusercontent.com',
       '192.168.1.3',
-      'nlw-spacetime-web-production.up.railway.app/',
+      'nlw-spacetime-server-production.up.railway.app',
     ],
   },
 }
