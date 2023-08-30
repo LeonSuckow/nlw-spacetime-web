@@ -4,13 +4,10 @@ const signInURL = `https://github.com/login/oauth/authorize?client_id=${process.
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value
-  let { nextUrl, headers, url } = request
-  nextUrl.host = headers.get('Host') ?? nextUrl.host
-  url = nextUrl.href
   if (!token) {
     return NextResponse.redirect(signInURL, {
       headers: {
-        'Set-Cookie': `redirectTo=${url}; Path=/; HttpOnly; max-age=20;`,
+        'Set-Cookie': `redirectTo=${request.url}; Path=/; HttpOnly; max-age=20;`,
       },
     })
   }
